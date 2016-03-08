@@ -5,7 +5,7 @@ from two1.commands.config import Config
 from two1.lib.wallet import Wallet
 from two1.lib.bitrequests import BitTransferRequests
 
-SERVER_IP = '10.31.229.209'
+SERVER_IP = '10.31.229.209:5001'
 
 username = Config().username
 wallet = Wallet()
