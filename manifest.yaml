@@ -23,7 +23,7 @@ info:
     - lint
     - html
   version: '0.1'
-host: e5cd7a9e1cc66764 
+host: 10.254.18.141:24 
 schemes:
   - http
 basePath: /

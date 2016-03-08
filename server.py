@@ -46,7 +46,7 @@ def cleanup(file_name):
 
 # linter 
 @app.route('/lint', methods=['POST'])
-@payment.required(1000)
+@payment.required(100)
 def lint():
     lint_file  = request.args.get('file')
     lint_file = "uploads/" + lint_file
@@ -68,5 +68,5 @@ def docs():
 
 # set up and run the server
 if __name__ == '__main__':
-        app.debug = True
+        # app.debug = True
         app.run(host='0.0.0.0', port=5001)
