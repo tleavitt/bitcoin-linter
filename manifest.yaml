@@ -1,0 +1,30 @@
+# Edit this document at editor.swagger.io
+swagger: '2.0'
+info:
+  x-21-github-profile-url: http://github.io
+  x-21-github-project-url: http://github.io
+  title: Bitcoin HTML Tidy
+  description: Lints html documents
+  termsOfService: 'https://opensource.org/licenses/MIT'
+  x-21-usage: 'POST a html document to the server to lint it. Accepts the html file as a post parameter. The response is a JSON object with format {"doc": <corrected html document>, "err": <list of formatting errors in document>}.'
+  x-21-quick-buy: "git clone https://github.com/tleavitt/bitcoin-linter.git <br/>cd bitcoin-linter <br/>python3 lint.py <path-to-html-file>"
+  x-21-category: utilities
+  x-21-total-price:
+    min: 100
+    max: 100
+  contact:
+    name: 'Tucker Leavitt'
+    email: 'tuckerl@stanford.edu'
+    url: 'https://github.com/tleavitt'
+  license:
+    name: MIT LICENSE
+    url: https://opensource.org/licenses/MIT
+  x-21-keywords:
+    - lint
+    - html
+  version: '0.1'
+host: e5cd7a9e1cc66764 
+schemes:
+  - http
+basePath: /
+x-21-manifest-path: /manifest
