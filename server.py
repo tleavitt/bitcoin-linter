@@ -20,7 +20,6 @@ payment = Payment(app, wallet)
 
 # configure uploads
 UPLOAD_FOLDER = 'uploads/'
-# ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 ALLOWED_EXTENSIONS = set(['js', 'html'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -45,7 +44,7 @@ def cleanup(file_name):
     os.remove(file_name)
     return None
 
-# image to text engine
+# linter 
 @app.route('/lint', methods=['POST'])
 @payment.required(1000)
 def lint():
@@ -59,6 +58,13 @@ def lint():
         'doc': document,
         'err': errors
     })
+
+# Serves the app manifest to the 21 crawler.
+@app.route('/manifest')
+def docs():
+    with open('manifest.yaml', 'r') as f:
+        manifest_yaml = yaml.load(f)
+    return json.dumps(manifest_yaml)
 
 # set up and run the server
 if __name__ == '__main__':
