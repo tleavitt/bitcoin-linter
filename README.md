@@ -6,7 +6,7 @@ Implements a simple, bitoin-payable API endpoint that accepts an html document a
 ## Usage
 POST a html document to the server to lint it. Accepts the html file as a post parameter. The response is a JSON object with format `{"doc": <corrected html document>, "err": <list of formatting errors in document>}.`
 
-Note: you must have a working copy of 21.co's `two1` library to use this 
+Note: you must have a working copy of 21.co's `two1` library to use this code
 
 Example usage:
 ```
