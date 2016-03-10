@@ -1,10 +1,12 @@
 # 21.co Bitoin HTML Linter
 For Stanford CS251P -- 21.co Marketplace
 
-Implements a simple, bitoin-payable API endpoint that accepts an html document and prettifies it. In it's present state, the server is little more than a wrapper around the [PyTidyLib](http://countergram.com/open-source/pytidylib/) module. However, you could easily extend it to lint a variety of different file types (JavaScript, Ruby, CSS, etc.), at which point it statrs becoming a more useful command-line tool for static code analysis.
+Implements a bitoin-payable API endpoint that accepts an html document and prettifies it for a small amount of bitcoin. This simple example demonstrates how micropyaments-based-SaaS might look.
+
+In it's present state, the server is little more than a wrapper around the [PyTidyLib](http://countergram.com/open-source/pytidylib/) module. However, you could easily extend the server code to lint a variety of different file types (JavaScript, Ruby, CSS, etc.). As you add support for more file types, the server starts to become a useful, versatile command-line tool for running static code analysis programatically.
 
 ## Usage
-POST a html document to the server to lint it. Accepts the html file as a post parameter. The response is a JSON object with format `{"doc": <corrected html document>, "err": <list of formatting errors in document>}.`
+POST a html document to the server to lint it, at a cost of 100 Satoshis. Accepts the html file and 21 wallet address as post parameters. The response is a JSON object with format `{"doc": <corrected html document>, "err": <list of formatting errors in document>}.`
 
 Note: you must have a working copy of 21.co's `two1` library to use this code
 
