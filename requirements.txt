@@ -1,1 +1,5 @@
-pillow==3.1.1
+Werkzeug == 0.11.3
+Flask == 0.10.1
+setuptools == 20.2.2
+pytidylib == 0.2.4
+two1

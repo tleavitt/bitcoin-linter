@@ -28,35 +28,30 @@ def allowed_file(filename):
     return '.' in filename and \
        filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-# upload file handler
-@app.route('/upload', methods=['POST'])
-def upload_file():
-    if request.method == 'POST':
-        file = request.files['file']
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            print("filename = {0}".format(filename))
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    return 'OK'
-
-# cleanup file handler
-def cleanup(file_name):
-    os.remove(file_name)
-    return None
-
 # linter 
 @app.route('/lint', methods=['POST'])
 @payment.required(100)
 def lint():
-    lint_file  = request.args.get('file')
-    lint_file = "uploads/" + lint_file
-    with open(lint_file) as f:
-        document, errors = tidy_document(f.read(), options={'numeric-entities':1})
-    print("Output String = {0}".format('document'))
-    cleanup(lint_file)
+    if request.method == 'POST':
+        lint_file = request.files['file']
+        if lint_file and allowed_file(lint_file.filename):
+            filename = secure_filename(lint_file.filename)
+            print("filename = {0}".format(filename))
+            lint_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            with open(filename) as f:
+                print("Uploaded File = {}".format(f.read()))
+                f.seek(0)
+                document, errors = tidy_document(f.read(), options={'numeric-entities':1})
+            print("Linted Document:\n{}".format(document));
+            print("Errors:\n{}".format(errors));
+            os.remove(filename)
+            return json.dumps({
+                'doc': str(document),
+                'err': str(errors)
+            })
+
     return json.dumps({
-        'doc': document,
-        'err': errors
+        'error': 'could not process file'
     })
 
 # Serves the app manifest to the 21 crawler.
@@ -68,5 +63,5 @@ def docs():
 
 # set up and run the server
 if __name__ == '__main__':
-        # app.debug = True
-        app.run(host='0.0.0.0', port=5001)
+    app.debug = True
+    app.run(host='0.0.0.0', port=5001)
