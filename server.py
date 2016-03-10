@@ -1,4 +1,5 @@
 import os
+import sys
 
 # import from the 21 Bitcoin Developer Library
 from two1.lib.wallet import Wallet
@@ -44,7 +45,7 @@ def lint():
                 document, errors = tidy_document(f.read(), options={'numeric-entities':1})
             print("Linted Document:\n{}".format(document));
             print("Errors:\n{}".format(errors));
-            os.remove(filename)
+            os.remove(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             return json.dumps({
                 'doc': str(document),
                 'err': str(errors)
@@ -63,5 +64,6 @@ def docs():
 
 # set up and run the server
 if __name__ == '__main__':
-    app.debug = True
-    app.run(host='0.0.0.0', port=5001)
+    # app.debug = True
+    pt = sys.argv[1] if (len(sys.argv) > 1) else 5001
+    app.run(host='0.0.0.0', port=pt)
