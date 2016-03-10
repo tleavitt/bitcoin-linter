@@ -23,5 +23,5 @@ pip3 install -r ./requirements.txt
 python3 ./server.py 5001
 
 # POST an html file to your local server (from a new shell)
-python3 ./lint.py test.html 0.0.0.0:5001
+python3 ./lint.py ./test.html 0.0.0.0:5001
 ```
