@@ -7,15 +7,19 @@ Implements a simple, bitoin-payable API endpoint that accepts an html document a
 POST a html document to the server to lint it. Accepts the html file as a post parameter. The response is a JSON object with format `{"doc": <corrected html document>, "err": <list of formatting errors in document>}.`
 
 Note: you must have a working copy of 21.co's `two1` library to use this 
+
 Example usage:
 ```
 # get the repo
 git clone https://github.com/tleavitt/bitcoin-linter.git
 cd bitcoin-linter 
+
 # install dependencies
 pip3 install -r requirements.txt
+
 # run the server locally
 python3 server.py 5001
+
 # POST an html file to your local server (from a new shell)
 python3 lint.py test.html 0.0.0.0:5001
 ```
