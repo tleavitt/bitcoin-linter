@@ -8,7 +8,7 @@ In it's present state, the server is little more than a wrapper around the [PyTi
 ## Usage
 POST a html document to the server to lint it, at a cost of 100 Satoshis. Accepts the html file and 21 wallet address as post parameters. The response is a JSON object with format `{"doc": <corrected html document>, "err": <list of formatting errors in document>}.`
 
-Note: you must have a working copy of 21.co's `two1` library and [HTML TIDY](https://github.com/htacg/tidy-html5/blob/master/README/README.md) to use this code
+Note: you must have a working copy of 21.co's `two1` library and [HTML Tidy](https://github.com/htacg/tidy-html5/blob/master/README/README.md) to use this code
 
 Example usage:
 ```
